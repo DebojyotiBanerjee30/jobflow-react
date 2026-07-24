@@ -1,9 +1,8 @@
+import { RouterProvider } from "react-router";
+import router from "./routes/router.jsx";
+
 const App = () => {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-100">
-      <h1 className="text-5xl font-bold text-blue-600">JobFlow</h1>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

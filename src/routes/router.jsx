@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
 
+import MainLayout from "../components/layout/MainLayout";
 import Dashboard from "../pages/Dashboard";
 import Applications from "../pages/Applications";
 import AddApplication from "../pages/AddApplication";
@@ -7,15 +8,22 @@ import AddApplication from "../pages/AddApplication";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Dashboard />,
-  },
-  {
-    path: "/applications",
-    element: <Applications />,
-  },
-  {
-    path: "/applications/new",
-    element: <AddApplication />,
+    element: <MainLayout />,
+
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+      {
+        path: "applications",
+        element: <Applications />,
+      },
+      {
+        path: "applications/new",
+        element: <AddApplication />,
+      },
+    ],
   },
 ]);
 
