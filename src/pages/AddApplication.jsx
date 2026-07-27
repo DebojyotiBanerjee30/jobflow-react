@@ -1,5 +1,7 @@
+import ApplicationForm from "../components/jobs/ApplicationForm";
+
 const AddApplication = () => {
-  return <h1>AddApplication</h1>;
+  return <ApplicationForm />;
 };
 
 export default AddApplication;
