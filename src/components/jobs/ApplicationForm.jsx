@@ -2,6 +2,7 @@ import { useState } from "react";
 import InputField from "../ui/InputField";
 import SelectField from "../ui/SelectField";
 import Button from "../ui/Button";
+import SkillsInput from "./SkillsInput";
 
 const statusOptions = [
   { label: "Applied", value: "Applied" },
@@ -31,6 +32,13 @@ const ApplicationForm = () => {
     }));
   };
 
+  const handleSkillsChange = (newSkills) => {
+    setFormData((prev) => ({
+      ...prev,
+      skills: newSkills,
+    }));
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="mx-auto max-w-4xl">
@@ -46,7 +54,6 @@ const ApplicationForm = () => {
             </p>
           </div>
 
-          {/* Form */}
           <form className="space-y-6">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <InputField
@@ -132,13 +139,19 @@ const ApplicationForm = () => {
               />
             </div>
 
-            <div className="grid grid-cols-1">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <InputField
                 label="Follow-up Date"
                 type="date"
                 name="followUpDate"
                 value={formData.followUpDate}
                 onChange={handleChange}
+              />
+
+              <SkillsInput
+                label="Skills"
+                value={formData.skills}
+                onChange={handleSkillsChange}
               />
             </div>
 
