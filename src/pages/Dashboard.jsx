@@ -48,7 +48,7 @@ const Dashboard = () => {
 
         setApplications(data);
       } catch (error) {
-        setError(error.message);
+        setError(error.message || "Something went wrong. Please try again.");
       } finally {
         setIsLoading(false);
       }

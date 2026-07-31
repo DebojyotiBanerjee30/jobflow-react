@@ -1,39 +1,125 @@
 {
   "applications": [
     {
-      "id": 1,
+      "id": "1",
       "company": "Google",
       "position": "React Developer",
       "status": "Interview",
       "appliedDate": "20 Jul 2026"
     },
     {
-      "id": 2,
-      "company": "Microsoft",
-      "position": "Frontend Engineer",
-      "status": "Applied",
-      "appliedDate": "18 Jul 2026"
-    },
-    {
-      "id": 3,
       "company": "Amazon",
-      "position": "SDE I",
-      "status": "Rejected",
-      "appliedDate": "15 Jul 2026"
-    },
-    {
-      "id": 4,
-      "company": "Adobe",
       "position": "UI Engineer",
-      "status": "Offer",
-      "appliedDate": "12 Jul 2026"
+      "status": "Interview",
+      "appliedDate": "2026-07-29",
+      "salary": "500000",
+      "location": "Noida",
+      "experience": "3",
+      "recruiterName": "",
+      "followUpDate": "2026-08-07",
+      "skills": [
+        "React",
+        "JavaScript",
+        "HTML",
+        "Css"
+      ],
+      "id": "0q1H789XBM4"
     },
     {
-      "id": 5,
       "company": "IBM",
       "position": "Frontend Developer",
-      "status": "Pending Review",
-      "appliedDate": "13 Jul 2026"
+      "status": "Applied",
+      "appliedDate": "2026-07-20",
+      "salary": "800000",
+      "location": "Kolkata",
+      "experience": "5",
+      "recruiterName": "Tanya",
+      "followUpDate": "2026-08-04",
+      "skills": [
+        "React",
+        "Next.js"
+      ],
+      "id": "CRFnRfkYBxg"
+    },
+    {
+      "company": "Flipkart",
+      "position": "Software Engineer",
+      "status": "Applied",
+      "appliedDate": "2026-07-20",
+      "salary": "900000",
+      "location": "Bengaluru",
+      "experience": "3",
+      "recruiterName": "",
+      "followUpDate": "2026-07-23",
+      "skills": [
+        "HTML",
+        "Css",
+        "JS",
+        "React"
+      ],
+      "id": "DyhzRbkEorM"
+    },
+    {
+      "company": "Inadev",
+      "position": "Configurator",
+      "status": "Applied",
+      "appliedDate": "2026-07-21",
+      "salary": "400000",
+      "location": "Kolkata",
+      "experience": "1",
+      "recruiterName": "",
+      "followUpDate": "2026-07-09",
+      "skills": [
+        "React"
+      ],
+      "id": "0IMO-bWcCYM"
+    },
+    {
+      "company": "Capgemini",
+      "position": "Software Developer",
+      "status": "Rejected",
+      "appliedDate": "2026-07-27",
+      "salary": "950000",
+      "location": "Remote",
+      "experience": "4",
+      "recruiterName": "Avi",
+      "followUpDate": "2026-08-03",
+      "skills": [
+        "React.js",
+        "Node.js"
+      ],
+      "id": "7Fa6it2SZdY"
+    },
+    {
+      "company": "Abc",
+      "position": "def",
+      "status": "Applied",
+      "appliedDate": "2026-07-22",
+      "salary": "20000",
+      "location": "Kolkata",
+      "experience": "5",
+      "recruiterName": "Tanya",
+      "followUpDate": "2026-07-21",
+      "skills": [
+        "React"
+      ],
+      "id": "TnFANYrDfzE"
+    },
+    {
+      "company": "sdsd",
+      "position": "sdsdsd",
+      "status": "Applied",
+      "appliedDate": "2026-07-13",
+      "salary": "343434",
+      "location": "Noida",
+      "experience": "23",
+      "recruiterName": "Avi",
+      "followUpDate": "2026-07-29",
+      "skills": [
+        "Abc"
+      ],
+      "id": "wwf2nwDngT4"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

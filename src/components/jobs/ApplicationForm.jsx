@@ -11,7 +11,7 @@ const statusOptions = [
   { label: "Rejected", value: "Rejected" },
 ];
 
-const ApplicationForm = () => {
+const ApplicationForm = ({ onSubmit, isLoading, error }) => {
   const [formData, setFormData] = useState({
     company: "",
     position: "",
@@ -39,6 +39,12 @@ const ApplicationForm = () => {
     }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    onSubmit(formData);
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="mx-auto max-w-4xl">
@@ -54,7 +60,7 @@ const ApplicationForm = () => {
             </p>
           </div>
 
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <InputField
                 label="Company"
@@ -155,10 +161,23 @@ const ApplicationForm = () => {
               />
             </div>
 
-            <div className="mt-8 flex justify-end gap-4">
-              <Button variant="secondary">Cancel</Button>
+            <div className="mt-8">
+              <div className="flex justify-end gap-4">
+                <Button variant="secondary">Cancel</Button>
 
-              <Button type="submit">Save Application</Button>
+                <Button type="submit" disabled={isLoading}>
+                  {isLoading ? "Saving..." : "Save Application"}
+                </Button>
+              </div>
+
+              {error && (
+                <p
+                  className="mt-2 text-right text-sm text-red-600"
+                  role="alert"
+                >
+                  {error}
+                </p>
+              )}
             </div>
           </form>
         </div>
