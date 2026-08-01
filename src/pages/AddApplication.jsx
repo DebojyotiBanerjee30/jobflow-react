@@ -24,6 +24,10 @@ const AddApplication = () => {
   };
   return (
     <ApplicationForm
+      title="Add Application"
+      description="Fill out the information below to create a new job application."
+      submitLabel="Save Application"
+      loadingLabel="Saving..."
       onSubmit={handleCreateApplication}
       isLoading={isLoading}
       error={error}

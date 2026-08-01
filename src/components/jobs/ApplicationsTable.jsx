@@ -1,8 +1,14 @@
 import StatusBadge from "./StatusBadge";
 import EmptyState from "../ui/EmptyState";
 import { SearchX } from "lucide-react";
+import TableSkeleton from "../ui/TableSkeleton";
+import { Link } from "react-router";
+import { Pencil } from "lucide-react";
 
-const ApplicationsTable = ({ applications }) => {
+const ApplicationsTable = ({ applications, isLoading }) => {
+  if (isLoading) {
+    return <TableSkeleton />;
+  }
   if (applications.length === 0) {
     return (
       <EmptyState
@@ -10,21 +16,6 @@ const ApplicationsTable = ({ applications }) => {
         title="No applications found"
         description="Try changing your search or filter criteria."
       />
-    );
-  }
-  if (applications.length === 0) {
-    return (
-      <div className="rounded-lg border border-dashed border-gray-300 bg-white py-12 text-center">
-        <p className="text-2xl">🔍</p>
-
-        <h3 className="mt-4 text-lg font-semibold text-gray-800">
-          No applications found
-        </h3>
-
-        <p className="mt-2 text-gray-500">
-          Try changing your search or filter criteria.
-        </p>
-      </div>
     );
   }
   return (
@@ -36,6 +27,7 @@ const ApplicationsTable = ({ applications }) => {
             <th className="px-6 py-3 text-left">Position</th>
             <th className="px-6 py-3 text-left">Status</th>
             <th className="px-6 py-3 text-left">Applied Date</th>
+            <th className="px-6 py-3 text-left">Actions</th>
           </tr>
         </thead>
 
@@ -51,6 +43,17 @@ const ApplicationsTable = ({ applications }) => {
               </td>
 
               <td className="px-6 py-4">{application.appliedDate}</td>
+              <td className="px-6 py-4">
+                <div className="flex items-center gap-2">
+                  <Link
+                    to={`/applications/edit/${application.id}`}
+                    className="inline-flex items-center gap-2 rounded-md border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 transition-colors hover:bg-blue-100"
+                  >
+                    <Pencil size={16} />
+                    Edit
+                  </Link>
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>

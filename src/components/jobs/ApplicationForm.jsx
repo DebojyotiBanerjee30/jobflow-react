@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import InputField from "../ui/InputField";
 import SelectField from "../ui/SelectField";
 import Button from "../ui/Button";
@@ -11,19 +11,36 @@ const statusOptions = [
   { label: "Rejected", value: "Rejected" },
 ];
 
-const ApplicationForm = ({ onSubmit, isLoading, error }) => {
-  const [formData, setFormData] = useState({
-    company: "",
-    position: "",
-    status: "Applied",
-    appliedDate: "",
-    salary: "",
-    location: "",
-    experience: "",
-    recruiterName: "",
-    followUpDate: "",
-    skills: [],
-  });
+const defaultFormData = {
+  company: "",
+  position: "",
+  status: "Applied",
+  appliedDate: "",
+  salary: "",
+  location: "",
+  experience: "",
+  recruiterName: "",
+  followUpDate: "",
+  skills: [],
+};
+
+const ApplicationForm = ({
+  title,
+  description,
+  submitLabel,
+  loadingLabel,
+  onSubmit,
+  isLoading,
+  error,
+  initialValues,
+}) => {
+  const [formData, setFormData] = useState(defaultFormData);
+
+  useEffect(() => {
+    if (initialValues) {
+      setFormData(initialValues);
+    }
+  }, [initialValues]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -49,15 +66,10 @@ const ApplicationForm = ({ onSubmit, isLoading, error }) => {
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="mx-auto max-w-4xl">
         <div className="rounded-2xl bg-white p-8 shadow-lg">
-          {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">
-              Add Application
-            </h1>
+            <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
 
-            <p className="mt-2 text-gray-600">
-              Fill out the information below to create a new job application.
-            </p>
+            <p className="mt-2 text-gray-600">{description}</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -166,7 +178,7 @@ const ApplicationForm = ({ onSubmit, isLoading, error }) => {
                 <Button variant="secondary">Cancel</Button>
 
                 <Button type="submit" disabled={isLoading}>
-                  {isLoading ? "Saving..." : "Save Application"}
+                  {isLoading ? loadingLabel : submitLabel}
                 </Button>
               </div>
 

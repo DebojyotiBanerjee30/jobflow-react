@@ -4,6 +4,7 @@ import MainLayout from "../components/layout/MainLayout";
 import Dashboard from "../pages/Dashboard";
 import Applications from "../pages/Applications";
 import AddApplication from "../pages/AddApplication";
+import EditApplication from "../pages/EditApplication";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "applications/new",
         element: <AddApplication />,
+      },
+      {
+        path: "applications/edit/:id",
+        element: <EditApplication />,
       },
     ],
   },

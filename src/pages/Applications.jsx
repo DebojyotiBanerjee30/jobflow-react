@@ -1,15 +1,32 @@
-import { useState } from "react";
-
-import applications from "../data/applications";
+import { useEffect, useState } from "react";
+import { getApplications } from "../services/applicationService";
 import SearchBar from "../components/jobs/SearchBar";
 import StatusFilter from "../components/jobs/StatusFilter";
 import SortDropdown from "../components/jobs/SortDropdown";
 import ApplicationsTable from "../components/jobs/ApplicationsTable";
 
 const Applications = () => {
+  const [applications, setApplications] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [status, setStatus] = useState("All");
   const [sortBy, setSortBy] = useState("newest");
+
+  useEffect(() => {
+    const fetchApplications = async () => {
+      try {
+        const data = await getApplications();
+        setApplications(data);
+      } catch (error) {
+        setError(error.message || "Something went wrong. Please try again.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchApplications();
+  }, []);
 
   const normalizedSearchTerm = searchTerm.toLowerCase();
 
@@ -30,6 +47,10 @@ const Applications = () => {
 
     return new Date(a.appliedDate) - new Date(b.appliedDate);
   });
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <div className="mx-auto max-w-7xl p-6">
@@ -54,7 +75,10 @@ const Applications = () => {
         />
       </div>
 
-      <ApplicationsTable applications={sortedApplications} />
+      <ApplicationsTable
+        isLoading={isLoading}
+        applications={sortedApplications}
+      />
     </div>
   );
 };

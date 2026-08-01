@@ -1,14 +1,7 @@
 {
   "applications": [
     {
-      "id": "1",
-      "company": "Google",
-      "position": "React Developer",
-      "status": "Interview",
-      "appliedDate": "20 Jul 2026"
-    },
-    {
-      "company": "Amazon",
+      "company": "Amazon India",
       "position": "UI Engineer",
       "status": "Interview",
       "appliedDate": "2026-07-29",
@@ -62,11 +55,11 @@
     {
       "company": "Inadev",
       "position": "Configurator",
-      "status": "Applied",
+      "status": "Rejected",
       "appliedDate": "2026-07-21",
       "salary": "400000",
       "location": "Kolkata",
-      "experience": "1",
+      "experience": "2",
       "recruiterName": "",
       "followUpDate": "2026-07-09",
       "skills": [
@@ -77,7 +70,7 @@
     {
       "company": "Capgemini",
       "position": "Software Developer",
-      "status": "Rejected",
+      "status": "Applied",
       "appliedDate": "2026-07-27",
       "salary": "950000",
       "location": "Remote",
@@ -91,34 +84,22 @@
       "id": "7Fa6it2SZdY"
     },
     {
-      "company": "Abc",
-      "position": "def",
-      "status": "Applied",
-      "appliedDate": "2026-07-22",
-      "salary": "20000",
+      "company": "Accenture",
+      "position": "Frontend Developer",
+      "status": "Offer",
+      "appliedDate": "2026-07-16",
+      "salary": "700000",
       "location": "Kolkata",
-      "experience": "5",
-      "recruiterName": "Tanya",
-      "followUpDate": "2026-07-21",
+      "experience": "3",
+      "recruiterName": "",
+      "followUpDate": "2026-08-05",
       "skills": [
-        "React"
+        "React",
+        "HTML",
+        "Css",
+        "Js"
       ],
-      "id": "TnFANYrDfzE"
-    },
-    {
-      "company": "sdsd",
-      "position": "sdsdsd",
-      "status": "Applied",
-      "appliedDate": "2026-07-13",
-      "salary": "343434",
-      "location": "Noida",
-      "experience": "23",
-      "recruiterName": "Avi",
-      "followUpDate": "2026-07-29",
-      "skills": [
-        "Abc"
-      ],
-      "id": "wwf2nwDngT4"
+      "id": "ZCxJD-O7HV8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
