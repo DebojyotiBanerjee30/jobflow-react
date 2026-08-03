@@ -7,6 +7,7 @@ import SearchBar from "../components/jobs/SearchBar";
 import StatusFilter from "../components/jobs/StatusFilter";
 import SortDropdown from "../components/jobs/SortDropdown";
 import ConfirmModal from "../components/ui/ConfirmModal";
+import ErrorMessage from "../components/ui/ErrorMessage";
 import ApplicationsTable from "../components/jobs/ApplicationsTable";
 
 const Applications = () => {
@@ -88,10 +89,6 @@ const Applications = () => {
     }
   };
 
-  if (error) {
-    return <p>{error}</p>;
-  }
-
   return (
     <div className="mx-auto max-w-7xl p-6">
       <h1 className="mb-6 text-3xl font-bold">Applications</h1>
@@ -115,11 +112,15 @@ const Applications = () => {
         />
       </div>
 
-      <ApplicationsTable
-        applications={sortedApplications}
-        isLoading={isLoading}
-        onDelete={handleOpenDeleteModal}
-      />
+      {error ? (
+        <ErrorMessage title="Failed to load applications" message={error} />
+      ) : (
+        <ApplicationsTable
+          applications={sortedApplications}
+          isLoading={isLoading}
+          onDelete={handleOpenDeleteModal}
+        />
+      )}
 
       <ConfirmModal
         isOpen={isDeleteModalOpen}

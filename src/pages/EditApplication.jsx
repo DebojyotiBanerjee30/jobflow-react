@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router";
 import { useState, useEffect } from "react";
+import ErrorMessage from "../components/ui/ErrorMessage.jsx";
 import FormSkeleton from "../components/jobs/FormSkeleton.jsx";
 import ApplicationForm from "../components/jobs/ApplicationForm";
 import {
@@ -58,13 +59,7 @@ const EditApplication = () => {
 
   if (fetchError) {
     return (
-      <div className="rounded-lg border border-red-200 bg-red-50 p-6 text-center">
-        <h2 className="text-lg font-semibold text-red-700">
-          Failed to load application
-        </h2>
-
-        <p className="mt-2 text-red-600">{fetchError}</p>
-      </div>
+      <ErrorMessage title="Failed to load application" message={fetchError} />
     );
   }
 
