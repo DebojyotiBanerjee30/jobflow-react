@@ -51,3 +51,13 @@ export const updateApplication = async (id, formData) => {
 
   return await response.json();
 };
+
+export const deleteApplication = async (id) => {
+  const response = await fetch(`${BASE_URL}/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to delete application");
+  }
+};

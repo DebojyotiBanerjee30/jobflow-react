@@ -1,24 +1,6 @@
 {
   "applications": [
     {
-      "company": "Amazon India",
-      "position": "UI Engineer",
-      "status": "Interview",
-      "appliedDate": "2026-07-29",
-      "salary": "500000",
-      "location": "Noida",
-      "experience": "3",
-      "recruiterName": "",
-      "followUpDate": "2026-08-07",
-      "skills": [
-        "React",
-        "JavaScript",
-        "HTML",
-        "Css"
-      ],
-      "id": "0q1H789XBM4"
-    },
-    {
       "company": "IBM",
       "position": "Frontend Developer",
       "status": "Applied",
@@ -53,24 +35,9 @@
       "id": "DyhzRbkEorM"
     },
     {
-      "company": "Inadev",
-      "position": "Configurator",
-      "status": "Rejected",
-      "appliedDate": "2026-07-21",
-      "salary": "400000",
-      "location": "Kolkata",
-      "experience": "2",
-      "recruiterName": "",
-      "followUpDate": "2026-07-09",
-      "skills": [
-        "React"
-      ],
-      "id": "0IMO-bWcCYM"
-    },
-    {
       "company": "Capgemini",
       "position": "Software Developer",
-      "status": "Applied",
+      "status": "Interview",
       "appliedDate": "2026-07-27",
       "salary": "950000",
       "location": "Remote",

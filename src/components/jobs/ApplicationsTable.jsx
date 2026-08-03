@@ -2,10 +2,11 @@ import StatusBadge from "./StatusBadge";
 import EmptyState from "../ui/EmptyState";
 import { SearchX } from "lucide-react";
 import TableSkeleton from "../ui/TableSkeleton";
+import Button from "../ui/Button";
 import { Link } from "react-router";
 import { Pencil } from "lucide-react";
 
-const ApplicationsTable = ({ applications, isLoading }) => {
+const ApplicationsTable = ({ applications, isLoading, onDelete }) => {
   if (isLoading) {
     return <TableSkeleton />;
   }
@@ -52,6 +53,13 @@ const ApplicationsTable = ({ applications, isLoading }) => {
                     <Pencil size={16} />
                     Edit
                   </Link>
+
+                  <Button
+                    variant="danger"
+                    onClick={() => onDelete(application)}
+                  >
+                    Delete
+                  </Button>
                 </div>
               </td>
             </tr>

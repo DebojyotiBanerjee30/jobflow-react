@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import { getApplications } from "../services/applicationService";
+import {
+  getApplications,
+  deleteApplication,
+} from "../services/applicationService";
 import SearchBar from "../components/jobs/SearchBar";
 import StatusFilter from "../components/jobs/StatusFilter";
 import SortDropdown from "../components/jobs/SortDropdown";
+import ConfirmModal from "../components/ui/ConfirmModal";
 import ApplicationsTable from "../components/jobs/ApplicationsTable";
 
 const Applications = () => {
@@ -12,6 +16,10 @@ const Applications = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [status, setStatus] = useState("All");
   const [sortBy, setSortBy] = useState("newest");
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [selectedApplication, setSelectedApplication] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState("");
 
   useEffect(() => {
     const fetchApplications = async () => {
@@ -48,6 +56,38 @@ const Applications = () => {
     return new Date(a.appliedDate) - new Date(b.appliedDate);
   });
 
+  const handleOpenDeleteModal = (application) => {
+    setSelectedApplication(application);
+    setDeleteError("");
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setSelectedApplication(null);
+    setDeleteError("");
+    setIsDeleteModalOpen(false);
+  };
+
+  const handleDeleteApplication = async () => {
+    if (!selectedApplication) return;
+    try {
+      setDeleteError("");
+      setIsDeleting(true);
+
+      await deleteApplication(selectedApplication.id);
+
+      setApplications((prev) =>
+        prev.filter((app) => app.id !== selectedApplication.id),
+      );
+
+      handleCloseDeleteModal();
+    } catch (error) {
+      setDeleteError(error.message || "Failed to delete application.");
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
   if (error) {
     return <p>{error}</p>;
   }
@@ -76,8 +116,20 @@ const Applications = () => {
       </div>
 
       <ApplicationsTable
-        isLoading={isLoading}
         applications={sortedApplications}
+        isLoading={isLoading}
+        onDelete={handleOpenDeleteModal}
+      />
+
+      <ConfirmModal
+        isOpen={isDeleteModalOpen}
+        title="Delete Application"
+        message={`Are you sure you want to delete "${selectedApplication?.company}"?`}
+        confirmLabel="Delete"
+        onCancel={handleCloseDeleteModal}
+        onConfirm={handleDeleteApplication}
+        isLoading={isDeleting}
+        error={deleteError}
       />
     </div>
   );
