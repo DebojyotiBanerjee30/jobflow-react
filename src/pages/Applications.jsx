@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  getApplications,
+  fetchApplications,
   deleteApplication,
-} from "../services/applicationService";
+} from "../features/applications/applicationSlice.js";
+import { useEffect, useState } from "react";
 import SearchBar from "../components/jobs/SearchBar";
 import StatusFilter from "../components/jobs/StatusFilter";
 import SortDropdown from "../components/jobs/SortDropdown";
@@ -11,9 +12,11 @@ import ErrorMessage from "../components/ui/ErrorMessage";
 import ApplicationsTable from "../components/jobs/ApplicationsTable";
 
 const Applications = () => {
-  const [applications, setApplications] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState("");
+  const dispatch = useDispatch();
+
+  const { applications, isLoading, error } = useSelector(
+    (state) => state.application,
+  );
   const [searchTerm, setSearchTerm] = useState("");
   const [status, setStatus] = useState("All");
   const [sortBy, setSortBy] = useState("newest");
@@ -23,19 +26,8 @@ const Applications = () => {
   const [deleteError, setDeleteError] = useState("");
 
   useEffect(() => {
-    const fetchApplications = async () => {
-      try {
-        const data = await getApplications();
-        setApplications(data);
-      } catch (error) {
-        setError(error.message || "Something went wrong. Please try again.");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchApplications();
-  }, []);
+    dispatch(fetchApplications());
+  }, [dispatch]);
 
   const normalizedSearchTerm = searchTerm.toLowerCase();
 
@@ -75,11 +67,7 @@ const Applications = () => {
       setDeleteError("");
       setIsDeleting(true);
 
-      await deleteApplication(selectedApplication.id);
-
-      setApplications((prev) =>
-        prev.filter((app) => app.id !== selectedApplication.id),
-      );
+      await dispatch(deleteApplication(selectedApplication.id)).unwrap();
 
       handleCloseDeleteModal();
     } catch (error) {

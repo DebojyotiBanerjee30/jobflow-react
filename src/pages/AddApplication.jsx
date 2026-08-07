@@ -1,9 +1,12 @@
+import { useDispatch } from "react-redux";
+import { createApplication } from "../features/applications/applicationSlice";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { createApplication } from "../services/applicationService.js";
 import ApplicationForm from "../components/jobs/ApplicationForm";
 
 const AddApplication = () => {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -13,7 +16,7 @@ const AddApplication = () => {
       setError("");
       setIsLoading(true);
 
-      await createApplication(formData);
+      await dispatch(createApplication(formData)).unwrap();
 
       navigate("/");
     } catch (error) {

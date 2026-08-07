@@ -1,14 +1,17 @@
-import { useState, useEffect } from "react";
-import { getApplications } from "../services/applicationService";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchApplications } from "../features/applications/applicationSlice";
 import StatCard from "../components/dashboard/StatCard";
 import EmptyState from "../components/ui/EmptyState";
 import DashBoardSkeleton from "../components/ui/DashBoardSkeleton";
 import RecentApplications from "../components/dashboard/RecentApplications";
 
 const Dashboard = () => {
-  const [applications, setApplications] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const dispatch = useDispatch();
+
+  const { applications, isLoading, error } = useSelector(
+    (state) => state.application,
+  );
 
   const stats = [
     {
@@ -40,22 +43,8 @@ const Dashboard = () => {
   ];
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-
-        const data = await getApplications();
-
-        setApplications(data);
-      } catch (error) {
-        setError(error.message || "Something went wrong. Please try again.");
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+    dispatch(fetchApplications());
+  }, [dispatch]);
 
   return (
     <div className="mx-auto max-w-7xl p-6">

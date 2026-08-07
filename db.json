@@ -1,22 +1,6 @@
 {
   "applications": [
     {
-      "company": "IBM",
-      "position": "Frontend Developer",
-      "status": "Applied",
-      "appliedDate": "2026-07-20",
-      "salary": "800000",
-      "location": "Kolkata",
-      "experience": "5",
-      "recruiterName": "Tanya",
-      "followUpDate": "2026-08-04",
-      "skills": [
-        "React",
-        "Next.js"
-      ],
-      "id": "CRFnRfkYBxg"
-    },
-    {
       "company": "Flipkart",
       "position": "Software Engineer",
       "status": "Applied",
@@ -35,38 +19,22 @@
       "id": "DyhzRbkEorM"
     },
     {
-      "company": "Capgemini",
-      "position": "Software Developer",
+      "company": "Amazon",
+      "position": "UI Engineer I",
       "status": "Interview",
-      "appliedDate": "2026-07-27",
-      "salary": "950000",
-      "location": "Remote",
-      "experience": "4",
-      "recruiterName": "Avi",
-      "followUpDate": "2026-08-03",
-      "skills": [
-        "React.js",
-        "Node.js"
-      ],
-      "id": "7Fa6it2SZdY"
-    },
-    {
-      "company": "Accenture",
-      "position": "Frontend Developer",
-      "status": "Offer",
-      "appliedDate": "2026-07-16",
-      "salary": "700000",
-      "location": "Kolkata",
+      "appliedDate": "2026-07-28",
+      "salary": "900000",
+      "location": "Noida",
       "experience": "3",
-      "recruiterName": "",
-      "followUpDate": "2026-08-05",
+      "recruiterName": "Tanya",
+      "followUpDate": "2026-08-13",
       "skills": [
         "React",
-        "HTML",
+        "Html",
         "Css",
         "Js"
       ],
-      "id": "ZCxJD-O7HV8"
+      "id": "940-HGDKD_c"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

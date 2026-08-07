@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import ErrorMessage from "../components/ui/ErrorMessage.jsx";
 import FormSkeleton from "../components/jobs/FormSkeleton.jsx";
 import ApplicationForm from "../components/jobs/ApplicationForm";
-import {
-  getApplicationById,
-  updateApplication,
-} from "../services/applicationService.js";
+import { getApplicationById } from "../services/applicationService.js";
+import { useDispatch } from "react-redux";
+import { updateApplication } from "../features/applications/applicationSlice";
 
 const EditApplication = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
   const [application, setApplication] = useState(null);
@@ -41,7 +41,12 @@ const EditApplication = () => {
     try {
       setSubmitError("");
       setIsSubmitting(true);
-      await updateApplication(id, formData);
+      await dispatch(
+        updateApplication({
+          id,
+          formData,
+        }),
+      ).unwrap();
 
       navigate("/applications");
     } catch (error) {
