@@ -10,12 +10,7 @@
       "experience": "3",
       "recruiterName": "",
       "followUpDate": "2026-07-23",
-      "skills": [
-        "HTML",
-        "Css",
-        "JS",
-        "React"
-      ],
+      "skills": ["HTML", "Css", "JS", "React"],
       "id": "DyhzRbkEorM"
     },
     {
@@ -28,13 +23,16 @@
       "experience": "3",
       "recruiterName": "Tanya",
       "followUpDate": "2026-08-13",
-      "skills": [
-        "React",
-        "Html",
-        "Css",
-        "Js"
-      ],
+      "skills": ["React", "Html", "Css", "Js"],
       "id": "940-HGDKD_c"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Demo User",
+      "email": "demo@example.com",
+      "password": "123456"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
