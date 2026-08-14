@@ -1,19 +1,6 @@
 {
   "applications": [
     {
-      "company": "Flipkart",
-      "position": "Software Engineer",
-      "status": "Applied",
-      "appliedDate": "2026-07-20",
-      "salary": "900000",
-      "location": "Bengaluru",
-      "experience": "3",
-      "recruiterName": "",
-      "followUpDate": "2026-07-23",
-      "skills": ["HTML", "Css", "JS", "React"],
-      "id": "DyhzRbkEorM"
-    },
-    {
       "company": "Amazon",
       "position": "UI Engineer I",
       "status": "Interview",
@@ -23,8 +10,31 @@
       "experience": "3",
       "recruiterName": "Tanya",
       "followUpDate": "2026-08-13",
-      "skills": ["React", "Html", "Css", "Js"],
+      "skills": [
+        "React",
+        "Html",
+        "Css",
+        "Js"
+      ],
       "id": "940-HGDKD_c"
+    },
+    {
+      "company": "Capgemini",
+      "position": "Frontend Developer",
+      "status": "Applied",
+      "appliedDate": "2026-08-10",
+      "salary": "900000",
+      "location": "Bengaluru",
+      "experience": "5",
+      "recruiterName": "Arpita",
+      "followUpDate": "2026-08-18",
+      "skills": [
+        "React.js",
+        "JS",
+        "HTML",
+        "Css"
+      ],
+      "id": "s3zbH2pQkn4"
     }
   ],
   "users": [

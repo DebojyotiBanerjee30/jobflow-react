@@ -1,7 +1,6 @@
 import { NavLink, Link } from "react-router";
-import { useDispatch } from "react-redux";
-import { logout } from "../../features/auth/authSlice.js";
 import Button from "../ui/Button.jsx";
+import keycloak from "../../config/keycloak.js";
 
 const navLinkClass = ({ isActive }) =>
   isActive
@@ -9,9 +8,10 @@ const navLinkClass = ({ isActive }) =>
     : "text-gray-700 transition-colors hover:text-blue-600";
 
 function Navbar() {
-  const dispatch = useDispatch();
   const handleLogout = async () => {
-    await dispatch(logout()).unwrap();
+    await keycloak.logout({
+      redirectUri: window.location.origin + "/login",
+    });
   };
   return (
     <nav className="border-b bg-white shadow-sm">
