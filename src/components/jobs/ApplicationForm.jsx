@@ -1,4 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { applicationSchema } from "../../schemas/applicationSchema";
 import InputField from "../ui/InputField";
 import SelectField from "../ui/SelectField";
 import Button from "../ui/Button";
@@ -34,33 +37,22 @@ const ApplicationForm = ({
   error,
   initialValues,
 }) => {
-  const [formData, setFormData] = useState(defaultFormData);
+  const {
+    register,
+    control,
+    handleSubmit: rhfHandleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(applicationSchema),
+    defaultValues: defaultFormData,
+  });
 
   useEffect(() => {
     if (initialValues) {
-      setFormData(initialValues);
+      reset(initialValues);
     }
-  }, [initialValues]);
-
-  const handleChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const handleSkillsChange = (newSkills) => {
-    setFormData((prev) => ({
-      ...prev,
-      skills: newSkills,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    onSubmit(formData);
-  };
+  }, [initialValues, reset]);
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -72,44 +64,36 @@ const ApplicationForm = ({
             <p className="mt-2 text-gray-600">{description}</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={rhfHandleSubmit(onSubmit)} className="space-y-6">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <InputField
                 label="Company"
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
+                {...register("company")}
                 placeholder="Company name"
-                required
+                error={errors.company?.message}
               />
 
               <InputField
                 label="Position"
-                name="position"
-                value={formData.position}
-                onChange={handleChange}
+                {...register("position")}
                 placeholder="Job title"
-                required
+                error={errors.position?.message}
               />
             </div>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <SelectField
                 label="Status"
-                name="status"
-                value={formData.status}
-                onChange={handleChange}
+                {...register("status")}
                 options={statusOptions}
-                required
+                error={errors.status?.message}
               />
 
               <InputField
                 label="Applied Date"
                 type="date"
-                name="appliedDate"
-                value={formData.appliedDate}
-                onChange={handleChange}
-                required
+                {...register("appliedDate")}
+                error={errors.appliedDate?.message}
               />
             </div>
 
@@ -117,43 +101,39 @@ const ApplicationForm = ({
               <InputField
                 label="Salary"
                 type="number"
-                name="salary"
-                value={formData.salary}
+                {...register("salary", {
+                  valueAsNumber: true,
+                })}
                 placeholder="Annual Salary"
-                onChange={handleChange}
-                min={0}
                 step={1}
-                required
+                error={errors.salary?.message}
               />
 
               <InputField
                 label="Experience"
                 type="number"
-                name="experience"
-                value={formData.experience}
+                {...register("experience", {
+                  valueAsNumber: true,
+                })}
                 placeholder="Years of Experience"
-                onChange={handleChange}
-                min={0}
                 step={0.5}
-                required
+                error={errors.experience?.message}
               />
             </div>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <InputField
                 label="Location"
-                name="location"
-                value={formData.location}
-                onChange={handleChange}
+                {...register("location")}
                 placeholder="Job location"
+                error={errors.location?.message}
               />
 
               <InputField
                 label="Recruiter Name"
-                name="recruiterName"
-                value={formData.recruiterName}
-                onChange={handleChange}
+                {...register("recruiterName")}
                 placeholder="Recruiter name"
+                error={errors.recruiterName?.message}
               />
             </div>
 
@@ -161,15 +141,21 @@ const ApplicationForm = ({
               <InputField
                 label="Follow-up Date"
                 type="date"
-                name="followUpDate"
-                value={formData.followUpDate}
-                onChange={handleChange}
+                {...register("followUpDate")}
+                error={errors.followUpDate?.message}
               />
 
-              <SkillsInput
-                label="Skills"
-                value={formData.skills}
-                onChange={handleSkillsChange}
+              <Controller
+                name="skills"
+                control={control}
+                render={({ field, fieldState }) => (
+                  <SkillsInput
+                    label="Skills"
+                    value={field.value}
+                    onChange={field.onChange}
+                    error={fieldState.error?.message}
+                  />
+                )}
               />
             </div>
 

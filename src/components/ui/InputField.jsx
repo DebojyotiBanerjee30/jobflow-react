@@ -2,10 +2,7 @@ const InputField = ({
   label,
   name,
   type = "text",
-  value,
-  onChange,
   placeholder,
-  required,
   disabled,
   error,
   ...props
@@ -18,18 +15,17 @@ const InputField = ({
       >
         {label}
       </label>
+
       <input
-        className="w-full rounded-lg border border-gray-300 px-4 py-2"
-        disabled={disabled}
-        placeholder={placeholder}
-        required={required}
-        name={name}
-        value={value}
         id={name}
+        name={name}
         type={type}
-        onChange={onChange}
+        placeholder={placeholder}
+        disabled={disabled}
+        className="w-full rounded-lg border border-gray-300 px-4 py-2"
         {...props}
       />
+
       {error && <span className="text-sm text-red-500">{error}</span>}
     </div>
   );

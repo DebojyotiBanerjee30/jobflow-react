@@ -1,40 +1,69 @@
 {
   "applications": [
     {
-      "company": "Amazon",
-      "position": "UI Engineer I",
-      "status": "Interview",
-      "appliedDate": "2026-07-28",
-      "salary": "900000",
-      "location": "Noida",
-      "experience": "3",
-      "recruiterName": "Tanya",
-      "followUpDate": "2026-08-13",
+      "company": "Inadev",
+      "position": "Frontend Developer",
+      "status": "Applied",
+      "appliedDate": "2026-08-17",
+      "salary": 1000000,
+      "experience": 2,
+      "location": "Kolkata",
+      "recruiterName": "",
+      "followUpDate": "2026-08-25",
       "skills": [
         "React",
+        "JS"
+      ],
+      "id": "KK1JcRMUDTA"
+    },
+    {
+      "company": "Amazon",
+      "position": "Software Engineer II",
+      "status": "Interview",
+      "appliedDate": "2026-08-10",
+      "salary": 1500000,
+      "experience": 3,
+      "location": "Remote",
+      "recruiterName": "Tanya",
+      "followUpDate": "2026-08-31",
+      "skills": [
+        "Js",
         "Html",
         "Css",
-        "Js"
+        "React.js"
       ],
-      "id": "940-HGDKD_c"
+      "id": "YSZ9D9-jc28"
+    },
+    {
+      "company": "IBM",
+      "position": "Software Developer",
+      "status": "Offer",
+      "appliedDate": "2026-08-19",
+      "salary": 900000,
+      "experience": 5,
+      "location": "Bengaluru",
+      "recruiterName": "",
+      "followUpDate": "2026-08-31",
+      "skills": [
+        "React.js"
+      ],
+      "id": "PYUOF1oZtPg"
     },
     {
       "company": "Capgemini",
-      "position": "Frontend Developer",
-      "status": "Applied",
-      "appliedDate": "2026-08-10",
-      "salary": "900000",
-      "location": "Bengaluru",
-      "experience": "5",
-      "recruiterName": "Arpita",
-      "followUpDate": "2026-08-18",
+      "position": "UI Engineer",
+      "status": "Rejected",
+      "appliedDate": "2026-08-02",
+      "salary": 600000,
+      "experience": 2,
+      "location": "Kolkata",
+      "recruiterName": "Avi",
+      "followUpDate": "2026-08-16",
       "skills": [
         "React.js",
-        "JS",
-        "HTML",
-        "Css"
+        "Js"
       ],
-      "id": "s3zbH2pQkn4"
+      "id": "LsfHm_SI6uk"
     }
   ],
   "users": [

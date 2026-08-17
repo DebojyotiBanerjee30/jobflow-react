@@ -73,8 +73,8 @@ const SkillsInput = ({
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        {error && <span className="text-sm text-red-500">{error}</span>}
       </div>
+      {error && <span className="text-sm text-red-500">{error}</span>}
     </div>
   );
 };
