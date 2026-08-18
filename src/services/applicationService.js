@@ -23,3 +23,11 @@ export const updateApplication = async (id, formData) => {
 export const deleteApplication = async (id) => {
   await api.delete(`/applications/${id}`);
 };
+
+export const searchApplications = async (searchTerm) => {
+  const response = await api.get(
+    `/applications?company:contains=${encodeURIComponent(searchTerm)}`,
+  );
+
+  return response.data;
+};

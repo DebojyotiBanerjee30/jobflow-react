@@ -4,6 +4,7 @@ import {
   deleteApplication as deleteApplicationService,
   createApplication as createApplicationService,
   updateApplication as updateApplicationService,
+  searchApplications as searchApplicationsService,
 } from "../../services/applicationService";
 
 const initialState = {
@@ -47,6 +48,15 @@ export const updateApplication = createAsyncThunk(
   },
 );
 
+export const searchApplications = createAsyncThunk(
+  "application/searchApplications",
+  async (searchTerm) => {
+    const data = await searchApplicationsService(searchTerm);
+
+    return data;
+  },
+);
+
 const applicationSlice = createSlice({
   name: "application",
   initialState,
@@ -82,6 +92,18 @@ const applicationSlice = createSlice({
         if (index !== -1) {
           state.applications[index] = action.payload;
         }
+      })
+      .addCase(searchApplications.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(searchApplications.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.applications = action.payload;
+      })
+      .addCase(searchApplications.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
       });
   },
 });

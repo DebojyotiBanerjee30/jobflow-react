@@ -64,6 +64,22 @@
         "Js"
       ],
       "id": "LsfHm_SI6uk"
+    },
+    {
+      "company": "Google",
+      "position": "React Developer",
+      "status": "Interview",
+      "appliedDate": "2026-08-10",
+      "salary": 1500000,
+      "experience": 5,
+      "location": "Bengaluru",
+      "recruiterName": "",
+      "followUpDate": "2026-08-17",
+      "skills": [
+        "ReactJs",
+        "JS"
+      ],
+      "id": "PNLmoz0Kaag"
     }
   ],
   "users": [

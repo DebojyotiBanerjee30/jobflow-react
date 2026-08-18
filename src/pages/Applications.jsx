@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchApplications,
+  searchApplications,
   deleteApplication,
 } from "../features/applications/applicationSlice.js";
 import { useEffect, useState } from "react";
+import useDebounce from "../hooks/useDebounce.js";
 import SearchBar from "../components/jobs/SearchBar";
 import StatusFilter from "../components/jobs/StatusFilter";
 import SortDropdown from "../components/jobs/SortDropdown";
@@ -18,6 +20,7 @@ const Applications = () => {
     (state) => state.application,
   );
   const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearchTerm = useDebounce(searchTerm, 400);
   const [status, setStatus] = useState("All");
   const [sortBy, setSortBy] = useState("newest");
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -26,19 +29,16 @@ const Applications = () => {
   const [deleteError, setDeleteError] = useState("");
 
   useEffect(() => {
-    dispatch(fetchApplications());
-  }, [dispatch]);
+    if (debouncedSearchTerm.trim() === "") {
+      dispatch(fetchApplications());
+      return;
+    }
 
-  const normalizedSearchTerm = searchTerm.toLowerCase();
+    dispatch(searchApplications(debouncedSearchTerm));
+  }, [debouncedSearchTerm, dispatch]);
 
   const filteredApplications = applications.filter((application) => {
-    const matchesSearch =
-      application.company.toLowerCase().includes(normalizedSearchTerm) ||
-      application.position.toLowerCase().includes(normalizedSearchTerm);
-
-    const matchesStatus = status === "All" || application.status === status;
-
-    return matchesSearch && matchesStatus;
+    return status === "All" || application.status === status;
   });
 
   const sortedApplications = [...filteredApplications].sort((a, b) => {
