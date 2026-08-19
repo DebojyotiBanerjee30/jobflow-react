@@ -3,16 +3,23 @@ import { createBrowserRouter } from "react-router";
 import MainLayout from "../components/layout/MainLayout";
 import ProtectedRoute from "../components/layout/ProtectedRoute";
 
-import Dashboard from "../pages/Dashboard";
-import Applications from "../pages/Applications";
-import AddApplication from "../pages/AddApplication";
-import EditApplication from "../pages/EditApplication";
-import Login from "../pages/Login";
+import {
+  Dashboard,
+  Applications,
+  AddApplication,
+  EditApplication,
+  Login,
+  NotFound,
+} from "./lazyPages";
 
 const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
   {
     element: <ProtectedRoute />,
